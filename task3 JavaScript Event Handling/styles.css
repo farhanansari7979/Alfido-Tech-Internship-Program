@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --transition-time: 0.5s;
+    --particle-count: 20;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+    transition: background-color 0.8s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    padding: 2rem;
+    max-width: 800px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #6c63ff, #ff6584);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all var(--transition-time) ease;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.color-changer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.magic-btn {
+    position: relative;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #6c63ff, #ff6584);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+}
+
+.magic-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.magic-btn:active {
+    transform: translateY(1px);
+}
+
+.btn-icon {
+    transition: transform var(--transition-time) ease;
+}
+
+.magic-btn:hover .btn-icon {
+    transform: rotate(180deg) scale(1.2);
+}
+
+.btn-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.btn-particles::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.5s ease;
+}
+
+.magic-btn:active .btn-particles::before {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+}
+
+.color-display {
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-time) ease;
+}
+
+#colorCode {
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+@keyframes particle-animation {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--r));
+        opacity: 0;
+    }
+}
+
