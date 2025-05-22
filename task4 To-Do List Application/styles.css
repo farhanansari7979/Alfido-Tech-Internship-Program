@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.todo-app {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-box {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px 0 0 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+#taskInput:focus {
+    border-color: #667eea;
+}
+
+#addBtn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+#addBtn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+#taskList {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.task {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: grab;
+}
+
+.task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task.dragging {
+    opacity: 0.5;
+    background: #f1f1f1;
+}
+
+.task-text {
+    flex: 1;
+    margin-right: 10px;
+    word-break: break-word;
+}
+
+.delete-btn {
+    background: #ff5e5e;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.delete-btn:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+}
+
+#clearAll {
+    background: none;
+    border: none;
+    color: #ff5e5e;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+#clearAll:hover {
+    opacity: 0.8;
+}
+
+/* Scrollbar styling */
+#taskList::-webkit-scrollbar {
+    width: 5px;
+}
+
+#taskList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#taskList::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+/* Animation for new tasks */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.new-task {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Animation for deleted tasks */
+@keyframes slideOut {
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+.deleting {
+    animation: slideOut 0.3s ease-in;
+}

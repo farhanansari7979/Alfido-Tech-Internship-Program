@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon To-Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <h1><i class="fas fa-list-check"></i> TaskMaster</h1>
+            <div class="input-box">
+                <input type="text" id="taskInput" placeholder="Add a new task...">
+                <button id="addBtn"><i class="fas fa-plus"></i></button>
+            </div>
+            <ul id="taskList"></ul>
+            <div class="controls">
+                <span id="taskCount">0 tasks</span>
+                <button id="clearAll">Clear All</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
